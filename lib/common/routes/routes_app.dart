@@ -1,4 +1,4 @@
-import 'package:crypto_price_tracker/home_page.dart';
+import 'package:crypto_price_tracker/views/home_page.dart';
 import 'package:crypto_price_tracker/second_page.dart';
 import 'package:flutter/material.dart';
 
