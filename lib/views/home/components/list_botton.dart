@@ -17,11 +17,17 @@ class ListBotton extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(right: 10.w),
       child: Row(
-        children: List.generate(
-          listOfAttrebute.length,
-          (index) => TextButton(
+        children: List.generate(listOfAttrebute.length, (index) {
+          return TextButton(
             onPressed: () {
-              Navigator.pushNamed(context, "/second");
+              if (index == 0) {
+              } else if (index == 1) {
+                Navigator.pushNamed(context, "/bitcoin");
+              } else if (index == 2) {
+                Navigator.pushNamed(context, "/usd");
+              } else if (index == 3) {
+                Navigator.pushNamed(context, "/setting");
+              }
             },
             child: Text(
               listOfAttrebute[index],
@@ -29,8 +35,8 @@ class ListBotton extends StatelessWidget {
                 color: colorButton,
               ),
             ),
-          ),
-        ),
+          );
+        }),
       ),
     );
   }
