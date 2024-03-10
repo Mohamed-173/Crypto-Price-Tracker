@@ -29,7 +29,7 @@ class BitcoinView extends StatelessWidget {
               },
             );
           } else {
-            return CryptoDetailsPage(
+            return const CryptoDetailsPage(
               cryptoData: {
                 "ask": 7000.3,
                 "ask_qty": 0.01,
@@ -55,13 +55,13 @@ class BitcoinView extends StatelessWidget {
 class CryptoDetailsPage extends StatelessWidget {
   final Map<String, dynamic> cryptoData;
 
-  CryptoDetailsPage({required this.cryptoData});
+  const CryptoDetailsPage({super.key, required this.cryptoData});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Crypto Details'),
+        title: const Text('Crypto Details'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -97,13 +97,13 @@ class CryptoDetailsPage extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         Text(value),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
       ],
     );
   }

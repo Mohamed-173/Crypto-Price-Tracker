@@ -5,8 +5,11 @@ class UsdView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("USD Page")),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Crypto Details of USD'),
+      ),
+      body: const Center(child: Text("USD Page")),
     );
   }
 }

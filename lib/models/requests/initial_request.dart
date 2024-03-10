@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class SubscribeRequest {
   final String method;
   final Params params;

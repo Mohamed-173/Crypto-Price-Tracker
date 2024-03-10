@@ -61,8 +61,7 @@ class LineTab extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
-                Container(
-                    child: Column(
+                Column(
                   children: [
                     Text(
                       title,
@@ -84,7 +83,7 @@ class LineTab extends StatelessWidget {
                       ),
                     ),
                   ],
-                )),
+                ),
               ],
             ),
             Text(

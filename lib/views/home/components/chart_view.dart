@@ -68,20 +68,20 @@ class Chart extends StatelessWidget {
         return _generateRandomData();
       case '1M':
         return [
-          FlSpot(1, 50),
-          FlSpot(2, 75),
+          const FlSpot(1, 50),
+          const FlSpot(2, 75),
           // Add more data points for 1 month
         ];
       case '1W':
         return [
-          FlSpot(1, 25),
-          FlSpot(2, 35),
+          const FlSpot(1, 25),
+          const FlSpot(2, 35),
           // Add more data points for 1 week
         ];
       case '1D':
         return [
-          FlSpot(1, 10),
-          FlSpot(2, 12),
+          const FlSpot(1, 10),
+          const FlSpot(2, 12),
           // Add more data points for 1 day
         ];
       default:
@@ -94,7 +94,7 @@ class Chart extends StatelessWidget {
     datas.add(FlSpot(datas.length + 1, listattribute));
     datas.add(FlSpot(datas.length + 1, 69745));
     datas.add(FlSpot(datas.length + 1, 69740));
-    print(datas.length);
+    // print(datas.length);
 
     return datas;
   }

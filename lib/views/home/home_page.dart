@@ -1,10 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-import 'dart:developer';
-import 'dart:io';
-
 import 'package:crypto_price_tracker/blocs/bloc/web_socket_bloc.dart';
-import 'package:crypto_price_tracker/view_models/view_model_hompage.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -60,59 +57,60 @@ class _HomePageState extends State<HomePage> {
               indent: 10, endIndent: 10, color: MyColorClass.dividerColor),
           Expanded(
             flex: 10,
-            child: Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: Responsive.isMobile(context) ? 25 : 50.w,
-                vertical: 10,
-              ),
-              color: MyColorClass.primaryColor,
-              child: BlocBuilder<WebSocketBloc, WebSocketState>(
-                builder: (context, state) {
-                  String btcSymbol = '';
+            child: SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Responsive.isMobile(context) ? 25 : 50.w,
+                  vertical: 10,
+                ),
+                color: MyColorClass.primaryColor,
+                child: BlocBuilder<WebSocketBloc, WebSocketState>(
+                  builder: (context, state) {
+                    String btcSymbol = '';
 
-                  double btcTotal = 0;
-                  String btcPrice = '';
+                    double btcTotal = 0;
+                    String btcPrice = '';
 
-                  if (state is FetchedData) {
-                    btcSymbol = state.ticker.data[0].symbol;
-                    btcTotal = state.ticker.data[0].bid;
-                    btcPrice = state.ticker.data[0].last.toString();
-                  } else {
-                    // if not fetchedDaTa
-                  }
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // first widget
-                      const PageTitle(title: "Dashboard"),
-                      // second widget
-                      Chart(listattribute: btcTotal),
-                      // third widget
-                      Column(
-                        children: [
-                          state is FetchedData
-                              ? LineTab(
-                                  title:
-                                      btcSymbol == '' ? "title" : (btcSymbol),
-                                  total: ("\$$btcTotal"),
-                                  price: btcPrice == '' ? "price" : btcPrice,
-                                )
-                              : const LineTab()
-                                  .redacted(context: context, redact: true),
-                          const SizedBox(height: 10),
-                          LineTab(),
-                        ],
-                      )
-                    ],
-                  );
-                },
+                    if (state is FetchedData) {
+                      btcSymbol = state.ticker.data[0].symbol;
+                      btcTotal = state.ticker.data[0].bid;
+                      btcPrice = state.ticker.data[0].last.toString();
+                    } else {
+                      // if not fetchedDaTa
+                    }
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // first widget
+                        const PageTitle(title: "Dashboard"),
+                        // second widget
+                        Chart(listattribute: btcTotal),
+                        // third widget
+                        Column(
+                          children: [
+                            state is FetchedData
+                                ? LineTab(
+                                    title:
+                                        btcSymbol == '' ? "title" : (btcSymbol),
+                                    total: ("\$$btcTotal"),
+                                    price: btcPrice == '' ? "price" : btcPrice,
+                                  )
+                                : const LineTab()
+                                    .redacted(context: context, redact: true),
+                            const SizedBox(height: 10),
+                            const LineTab(),
+                          ],
+                        )
+                      ],
+                    );
+                  },
+                ),
               ),
             ),
           ),
         ],
       )),
     );
-    ;
   }
 }
